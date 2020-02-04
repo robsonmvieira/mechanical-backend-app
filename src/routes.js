@@ -1,7 +1,9 @@
-import { Router } from 'express';
+import { Router } from 'express'
+import Role from './app/controllers/RoleController'
 
-const routes = new Router();
+const routes = new Router()
 
-routes.get('/', (req, res) => res.json({ message: 'Welcome to Omni CLI' }));
+routes.get('/roles', Role.index)
+routes.get('/', (req, res) => res.json({ message: 'Welcome to Omni CLI' }))
 
-export default routes;
+export default routes
