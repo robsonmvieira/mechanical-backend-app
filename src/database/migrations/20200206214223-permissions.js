@@ -3,30 +3,31 @@ module.exports = {
     return queryInterface.createTable('permissions', {
       id: {
         type: Sequelize.INTEGER,
-        notNullable: false,
-        autoIncremente: true
+        autoIncrement: true,
+        notnullable: true,
+        primaryKey: true
       },
       name: {
         type: Sequelize.STRING,
-        unique: true,
-        notNullable: true
+        notnullable: true,
+        unique: true
       },
       slug: {
         type: Sequelize.STRING,
-        unique: true,
-        notNullable: true
+        unique: true
       },
       description: {
-        type: Sequelize.STRING,
-        notNullable: true
+        type: Sequelize.STRING
       },
       created_at: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.DATE.now
+        allowNull: false,
+        defaultValue: Sequelize.NOW
       },
       updated_at: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.DATE.now
+        allowNull: false,
+        defaultValue: Sequelize.NOW
       }
     })
   },
