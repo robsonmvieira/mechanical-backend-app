@@ -1,7 +1,7 @@
 import Permission from '../models/Permission'
 
 class PermissionController {
-  async create(req, res) {
+  async store(req, res) {
     const data = req.body
     const permission = await Permission.create(data)
     return res.status(201).json(permission)
