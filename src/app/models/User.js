@@ -8,8 +8,7 @@ class User extends Model {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
         password: Sequelize.STRING,
-        password_hash: Sequelize.VIRTUAL,
-        roles: Sequelize.ARRAY(Sequelize.INTEGER)
+        password_hash: Sequelize.VIRTUAL
       },
       {
         sequelize
@@ -21,6 +20,10 @@ class User extends Model {
       }
     })
     return this
+  }
+
+  static associate(models) {
+    this.hasMany(models.Role, { foreignKey: 'user_id' })
   }
 }
 export default User

@@ -29,10 +29,6 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW
-      },
-      roles: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER),
-        defaultValue: null
       }
     })
   },
