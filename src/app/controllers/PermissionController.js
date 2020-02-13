@@ -1,4 +1,5 @@
 import Permission from '../models/Permission'
+import User from '../models/User'
 
 class PermissionController {
   async store(req, res) {
@@ -8,7 +9,15 @@ class PermissionController {
   }
 
   async index(req, res) {
-    const permissions = await Permission.findAll()
+    const permissions = await Permission.findAll({
+      include: [
+        {
+          model: User,
+          as: 'users',
+          through: { attributes: [] }
+        }
+      ]
+    })
     return res.status(200).json(permissions)
   }
 }
