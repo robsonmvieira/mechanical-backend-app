@@ -4,8 +4,9 @@ import databaseConfig from '../config/database'
 import User from '../app/models/User'
 import Role from '../app/models/Role'
 import Permission from '../app/models/Permission'
+import Budget from '../app/models/Budget'
 
-const models = [User, Role, Permission]
+const models = [User, Role, Permission, Budget]
 
 class Database {
   constructor() {
