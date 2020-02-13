@@ -32,6 +32,11 @@ class User extends Model {
       as: 'roles',
       foreignKey: 'users_id'
     })
+    this.belongsToMany(models.Permission, {
+      through: 'users_permissions',
+      as: 'permissions',
+      foreignKey: 'users_id'
+    })
   }
 }
 export default User
