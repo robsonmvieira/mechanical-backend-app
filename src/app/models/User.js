@@ -19,11 +19,19 @@ class User extends Model {
         user.password = await bcrypt.hashSync(user.password_hash, 8)
       }
     })
+    this.addHook('afterCreate', async user => {
+      await user.setRoles(1)
+      await user.save()
+    })
     return this
   }
 
   static associate(models) {
-    this.hasMany(models.Role, { foreignKey: 'user_id' })
+    this.belongsToMany(models.Role, {
+      through: 'users_roles',
+      as: 'roles',
+      foreignKey: 'users_id'
+    })
   }
 }
 export default User
