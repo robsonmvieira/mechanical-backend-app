@@ -1,18 +1,24 @@
 import User from '../models/User'
 import Roles from '../models/Role'
+import Permissions from '../models/Permission'
 
 class UserController {
   async store(req, res) {
     const data = req.body
     const user = await User.create(data)
-    // await user.setRoles(1)
-    // await user.save()
     return res.status(201).json(user)
   }
 
   async index(req, res) {
     const users = await User.findAll({
-      include: [{ model: Roles, as: 'roles', through: { attributes: [] } }]
+      include: [
+        { model: Roles, as: 'roles', through: { attributes: [] } },
+        {
+          model: Permissions,
+          as: 'permissions',
+          through: { attributes: [] }
+        }
+      ]
     })
     return res.status(200).json(users)
   }
