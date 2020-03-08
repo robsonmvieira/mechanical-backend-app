@@ -23,7 +23,13 @@ class User extends Model {
       await user.setRoles(1)
       await user.save()
     })
+
     return this
+  }
+
+  async checkPassword(pass) {
+    const match = await bcrypt.compare(pass, this.password)
+    return match
   }
 
   static associate(models) {
@@ -39,4 +45,5 @@ class User extends Model {
     })
   }
 }
+
 export default User
