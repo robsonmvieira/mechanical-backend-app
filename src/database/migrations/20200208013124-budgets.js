@@ -16,7 +16,7 @@ module.exports = {
           key: 'id'
         }
       },
-      doBy: {
+      do_by: {
         type: Sequelize.INTEGER,
         onDelete: 'set null',
         allowNull: false,
@@ -26,6 +26,9 @@ module.exports = {
         }
       },
       description: {
+        type: Sequelize.STRING
+      },
+      total: {
         type: Sequelize.STRING
       },
       created_at: {
